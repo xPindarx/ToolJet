@@ -2,9 +2,9 @@ spec:
   name: tooljet
   services:
     - name: tooljet
-      git:
+      github:
         branch: chore/one-click-digitalocean-deploy
-        repo_clone_url: https://github.com/ToolJet/ToolJet.git
+        repo: ToolJet/ToolJet
       dockerfile_path: "./docker/production.Dockerfile"
       run_command: "npm run start:prod"
       envs:
