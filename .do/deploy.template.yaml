@@ -2,10 +2,11 @@ spec:
   name: tooljet
   services:
     - name: tooljet
-      git:
-        branch: chore/one-click-digitalocean-deploy
-        repo_clone_url: https://github.com/ToolJet/ToolJet.git
-      dockerfile_path: "./docker/production.Dockerfile"
+      image:
+        registry_type: DOCKER_HUB
+        registry: tooljet
+        repository: tooljet-ce
+        tag: latest
       run_command: "npm run start:prod"
       envs:
       - key: NODE_ENV
@@ -33,8 +34,7 @@ spec:
       - key: TOOLJET_SERVER_URL
         scope: RUN_TIME
         value: ${APP_URL}
-      databases:
-      - name: pg-db
-        engine: PG
-        version: 13
-        production: false
+  databases:
+    - name: pg-db
+      engine: PG
+      production: false
